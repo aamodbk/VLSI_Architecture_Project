@@ -1,0 +1,16 @@
+simulator( 'spectre )
+design(	 "/home/prabalmahajan/simulation/Level_conv/spectre/schematic/netlist/netlist")
+resultsDir( "/home/prabalmahajan/simulation/Level_conv/spectre/schematic" )
+modelFile( 
+    '("/mnt/cadence_tools/gpdk045_v_6_0/gpdk045/../models/spectre/gpdk045.scs" "mc")
+)
+analysis('tran ?stop "300n"  )
+desVar(	  "d_del" 1n	)
+desVar(	  "w" 120n	)
+envOption(
+	'analysisOrder  list("tran") 
+)
+temp( 27 ) 
+run()
+selectResult( 'tran )
+plot(getData("/Q") getData("/D") )
